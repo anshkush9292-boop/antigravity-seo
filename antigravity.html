@@ -19,7 +19,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
 
     <!-- JSON-LD Structured Data: Article & FAQ -->
     <script type="application/ld+json">
@@ -89,13 +89,12 @@
         ::-webkit-scrollbar-thumb { background: var(--bd); border-radius: 10px; }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'DM Sans', sans-serif;
             background-color: var(--bg);
             color: var(--wh);
-            line-height: 1.7;
+            line-height: 1.6;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
-            letter-spacing: -0.01em;
         }
 
         /* Nav */
@@ -107,7 +106,7 @@
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--bd);
         }
-        .logo { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 22px; color: var(--wh); letter-spacing: -1px; }
+        .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 22px; color: var(--wh); letter-spacing: -1px; }
         .logo span { color: var(--or); }
         .back-link { 
             font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 700; color: var(--tx); 
@@ -131,41 +130,61 @@
             transform: translateY(0);
         }
 
+        /* Load-in for Hero */
+        .load-in { opacity: 0; transform: translateY(20px); animation: loadIn 0.8s ease-out forwards; }
+        .delay-02 { animation-delay: 0.2s; }
+        .delay-04 { animation-delay: 0.4s; }
+        .delay-06 { animation-delay: 0.6s; }
+
+        @keyframes loadIn { to { opacity: 1; transform: translateY(0); } }
+
         /* Stagger Delays */
         .delay-1 { transition-delay: 0.1s; }
         .delay-2 { transition-delay: 0.2s; }
         .delay-3 { transition-delay: 0.3s; }
 
         @media (prefers-reduced-motion: reduce) {
-            .reveal {
+            .reveal, .load-in {
                 opacity: 1 !important;
                 transform: none !important;
                 transition: none !important;
+                animation: none !important;
             }
         }
 
         /* Typography */
-        h1, h2, h3 { font-family: 'Sora', sans-serif; line-height: 1.1; letter-spacing: -0.04em; }
-        h1 { font-size: clamp(48px, 8vw, 84px); font-weight: 800; margin-bottom: 24px; }
-        h2 { font-size: clamp(32px, 5vw, 44px); font-weight: 700; margin-bottom: 32px; color: var(--wh); }
-        h3 { font-size: 14px; font-weight: 700; margin-bottom: 16px; color: var(--or); letter-spacing: 0.2em; text-transform: uppercase; }
+        h1, h2, h3 { font-family: 'Syne', sans-serif; line-height: 1; letter-spacing: -0.05em; }
+        h1 { font-size: clamp(48px, 9vw, 98px); font-weight: 800; margin-bottom: 32px; position: relative; }
+        h1::after {
+            content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 140%; height: 140%; background: radial-gradient(circle, rgba(255,107,44,0.12) 0%, transparent 65%);
+            z-index: -1; pointer-events: none;
+        }
+        h2 { font-size: clamp(32px, 5vw, 48px); font-weight: 800; margin-bottom: 32px; color: var(--wh); }
+        h3 { font-size: 13px; font-weight: 700; margin-bottom: 16px; color: var(--or); letter-spacing: 0.25em; text-transform: uppercase; }
 
-        .paragraph { font-size: 17px; color: var(--tx); margin-bottom: 32px; max-width: 700px; font-weight: 400; line-height: 1.7; }
+        .paragraph { font-size: 18px; color: var(--tx); margin-bottom: 32px; max-width: 700px; line-height: 1.7; }
+        .proof-line { font-size: 20px; font-weight: 500; color: #eee; margin-bottom: 48px; border-left: 3px solid var(--or); padding-left: 24px; max-width: 600px; text-align: left; margin-left: auto; margin-right: auto; }
 
         /* Hero */
-        .hero { text-align: center; padding: 200px 0 100px; position: relative; }
-        .hero::before {
-            content: ''; position: absolute; top: -100px; left: 50%; transform: translateX(-50%);
-            width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(255, 107, 44, 0.1) 0%, transparent 70%);
-            z-index: -1;
-        }
+        .hero { text-align: center; padding: 220px 0 120px; position: relative; }
         .badge {
-            display: inline-block; padding: 8px 16px; background: rgba(255, 107, 44, 0.1);
-            color: var(--or); border-radius: 100px; font-size: 11px; font-weight: 800;
-            letter-spacing: 2px; text-transform: uppercase; margin-bottom: 32px;
-            border: 1px solid rgba(255, 107, 44, 0.2);
+            display: inline-block; padding: 8px 18px; background: rgba(255, 107, 44, 0.08);
+            color: var(--or); border-radius: 100px; font-size: 10px; font-weight: 800;
+            letter-spacing: 3px; text-transform: uppercase; margin-bottom: 40px;
+            border: 1px solid rgba(255, 107, 44, 0.15);
         }
+
+        /* CTAs */
+        .hero-ctas { display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .btn {
+            display: inline-block; padding: 18px 40px; border-radius: 12px; font-family: 'Syne', sans-serif;
+            font-weight: 800; font-size: 15px; transition: 0.3s; cursor: pointer; text-decoration: none;
+        }
+        .btn-primary { background: var(--or); color: var(--wh); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(255,107,44,0.25); }
+        .btn-secondary { background: rgba(255, 255, 255, 0.05); color: var(--wh); border: 1px solid var(--bd); }
+        .btn-secondary:hover { background: rgba(255, 255, 255, 0.1); border-color: var(--tx); }
 
         /* Direct Answer Box */
         .direct-answer {
@@ -254,11 +273,14 @@
     <div class="container">
         
         <section class="hero">
-            <div class="badge reveal">AEO EXPERIMENT v1.0</div>
-            <h1 class="reveal">The Future of<br>Search is AEO.</h1>
-            <p class="paragraph reveal">How I bridge the gap between traditional SEO and AI-driven Answer Engine Optimization in 2025.</p>
-            <div class="validation-banner reveal">
-                <span style="font-size:18px">✓</span> Validated by Google Search Console & Rich Results Test
+            <div class="badge load-in">AEO EXPERIMENT v1.0</div>
+            <h1 class="load-in delay-02">The Future of Search<br>is AEO — And I Tested It.</h1>
+            <div class="proof-line load-in delay-04">
+                Ranked with zero backlinks using AI-first structured content and schema.
+            </div>
+            <div class="hero-ctas load-in delay-06">
+                <a href="#the-shift" class="btn btn-primary">View Case Study</a>
+                <a href="mailto:anshkush9292@gmail.com" class="btn btn-secondary">Hire Me for AEO Strategy</a>
             </div>
         </section>
 
