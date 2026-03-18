@@ -117,8 +117,32 @@
 
         /* General Layout */
         .container { max-width: 1000px; margin: 0 auto; padding: 0 40px; }
-        section { padding: 120px 0 60px; opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
-        section.reveal { opacity: 1; transform: translateY(0); }
+        section { padding: 120px 0 60px; }
+
+        /* Scroll Reveal Animation Styles */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, transform;
+        }
+        .reveal.reveal-active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger Delays */
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal {
+                opacity: 1 !important;
+                transform: none !important;
+                transition: none !important;
+            }
+        }
 
         /* Typography */
         h1, h2, h3 { font-family: 'Sora', sans-serif; line-height: 1.1; letter-spacing: -0.04em; }
@@ -230,20 +254,20 @@
     <div class="container">
         
         <section class="hero">
-            <div class="badge">AEO EXPERIMENT v1.0</div>
-            <h1>The Future of<br>Search is AEO.</h1>
-            <p class="paragraph">How I bridge the gap between traditional SEO and AI-driven Answer Engine Optimization in 2025.</p>
-            <div class="validation-banner">
+            <div class="badge reveal">AEO EXPERIMENT v1.0</div>
+            <h1 class="reveal">The Future of<br>Search is AEO.</h1>
+            <p class="paragraph reveal">How I bridge the gap between traditional SEO and AI-driven Answer Engine Optimization in 2025.</p>
+            <div class="validation-banner reveal">
                 <span style="font-size:18px">✓</span> Validated by Google Search Console & Rich Results Test
             </div>
         </section>
 
         <section id="the-shift">
-            <div class="snippet-label">QUICK SUMMARY</div>
-            <h2>The Shift from Clicks to Answers.</h2>
-            <p class="paragraph">AI search engines like Perplexity, ChatGPT, and Google AI Overviews are changing how users discover brands. If your brand isn't structured as a <strong>direct answer</strong>, it doesn't exist in the AI search loop.</p>
+            <div class="snippet-label reveal">QUICK SUMMARY</div>
+            <h2 class="reveal">The Shift from Clicks to Answers.</h2>
+            <p class="paragraph reveal">AI search engines like Perplexity, ChatGPT, and Google AI Overviews are changing how users discover brands. If your brand isn't structured as a <strong>direct answer</strong>, it doesn't exist in the AI search loop.</p>
             
-            <div class="direct-answer">
+            <div class="direct-answer reveal">
                 <div class="snippet-label">AI-OPTIMIZED RESPONSE</div>
                 <div class="quote">
                     AEO (Answer Engine Optimization) structures web content specifically for AI models. By mapping data with FAQPage JSON-LD and crafting 40-60 word precise answers, brands can bypass traditional search results and appear as the "Direct Answer" in AI Overviews.
@@ -252,29 +276,29 @@
         </section>
 
         <section id="metrics">
-            <h3>Growth Engine Analytics</h3>
-            <h2>Impact on CAC & LTV</h2>
-            <p class="paragraph">In 2025, search isn't just about traffic; it's about unit economics. AEO drastically reduces Customer Acquisition Cost by capturing bottom-of-funnel queries organically.</p>
+            <h3 class="reveal">Growth Engine Analytics</h3>
+            <h2 class="reveal">Impact on CAC & LTV</h2>
+            <p class="paragraph reveal">In 2025, search isn't just about traffic; it's about unit economics. AEO drastically reduces Customer Acquisition Cost by capturing bottom-of-funnel queries organically.</p>
             
             <div class="metric-grid">
-                <div class="metric-card">
+                <div class="metric-card reveal">
                     <div class="metric-val">3:1</div>
                     <div class="metric-label">Healthy LTV:CAC Ratio</div>
                 </div>
-                <div class="metric-card">
+                <div class="metric-card reveal">
                     <div class="metric-val">AEO</div>
                     <div class="metric-label">Organic AI Acquisition</div>
                 </div>
             </div>
 
-            <p class="paragraph" style="font-size: 15px;">By optimizing for AEO, we capture users directly within AI search interfaces, reducing the "Total Marketing Spend" component of the CAC formula while maintaining high intent acquisition.</p>
+            <p class="paragraph reveal" style="font-size: 15px;">By optimizing for AEO, we capture users directly within AI search interfaces, reducing the "Total Marketing Spend" component of the CAC formula while maintaining high intent acquisition.</p>
         </section>
 
         <section id="vs">
-            <h3>Methodology Comparison</h3>
-            <h2>SEO vs AEO</h2>
+            <h3 class="reveal">Methodology Comparison</h3>
+            <h2 class="reveal">SEO vs AEO</h2>
             <div class="comp-grid">
-                <div class="comp-card">
+                <div class="comp-card reveal">
                     <h4>Traditional SEO (Past)</h4>
                     <ul>
                         <li>Broad Keyword Matching</li>
@@ -283,7 +307,7 @@
                         <li>Click-Through Optimization</li>
                     </ul>
                 </div>
-                <div class="comp-card highlight">
+                <div class="comp-card highlight reveal">
                     <h4>Answer Engine (Future)</h4>
                     <ul>
                         <li>Direct Fact Matching</li>
@@ -296,24 +320,24 @@
         </section>
 
         <section id="proof">
-            <h3>Technical Validation</h3>
-            <h2>Structured for Visibility.</h2>
-            <p class="paragraph">This page is built with advanced JSON-LD modules to tell Google exactly what it is reading. Here is how I set up the eligibility for AI engines.</p>
+            <h3 class="reveal">Technical Validation</h3>
+            <h2 class="reveal">Structured for Visibility.</h2>
+            <p class="paragraph reveal">This page is built with advanced JSON-LD modules to tell Google exactly what it is reading. Here is how I set up the eligibility for AI engines.</p>
             
             <div class="faq-container">
-                <div class="faq-item">
+                <div class="faq-item reveal">
                     <button class="faq-trigger">What was written for snippet eligibility? <span>+</span></button>
                     <div class="faq-content">
                         <p>40-60 word direct answers were crafted for specific questions to ensure AI engines can easily extract the core meaning without filler text. Each answer targets a precise user query to maximize AI Overview eligibility.</p>
                     </div>
                 </div>
-                <div class="faq-item">
+                <div class="faq-item reveal">
                     <button class="faq-trigger">What schema was implemented? <span>+</span></button>
                     <div class="faq-content">
                         <p>FAQPage and Article JSON-LD were used to map on-page content exactly. This is the primary requirement for Google and other Engines to validate answer eligibility for the current AI search loop.</p>
                     </div>
                 </div>
-                <div class="faq-item">
+                <div class="faq-item reveal">
                     <button class="faq-trigger">What are the next steps? <span>+</span></button>
                     <div class="faq-content">
                         <p>Scaling this methodology to 'Conversion Quick Wins' and 'LTV optimization' pages, creating a comprehensive AEO ecosystem that drives measurable business growth.</p>
@@ -322,11 +346,11 @@
             </div>
         </section>
 
-        <section class="cta-box">
-            <h3>Next Gen Marketing</h3>
-            <h2 style="color: #fff;">Scale Your Growth Engine.</h2>
-            <p class="paragraph" style="margin: 0 auto 32px; font-size: 16px;">Ready to dominate AI search results with an AEO-first content strategy?</p>
-            <a href="mailto:anshkush9292@gmail.com" class="cta-btn">Scale Your Brand ↗</a>
+        <section class="cta-box reveal">
+            <h3 class="reveal delay-1">Next Gen Marketing</h3>
+            <h2 class="reveal delay-2" style="color: #fff;">Scale Your Growth Engine.</h2>
+            <p class="paragraph reveal delay-3" style="margin: 0 auto 32px; font-size: 16px;">Ready to dominate AI search results with an AEO-first content strategy?</p>
+            <a href="mailto:anshkush9292@gmail.com" class="cta-btn reveal delay-3">Scale Your Brand ↗</a>
         </section>
 
         <footer>
@@ -337,16 +361,22 @@
 
     <script>
         // Scroll Reveal
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('reveal');
+                    entry.target.classList.add('reveal-active');
+                    observer.unobserve(entry.target); // Reveal only once
                 }
             });
-        }, { threshold: 0.1 });
+        }, observerOptions);
 
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
         });
 
         // FAQ Toggle
